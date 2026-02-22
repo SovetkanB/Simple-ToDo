@@ -13,14 +13,14 @@ type ToDoService interface {
 	GetAllTodos() ([]models.ToDo, error)
 	UpdateTodo(todo *models.ToDo) error
 	DeleteTodo(id string) error
-	CompleteTodo(id string) error
+	//CompleteTodo(id string) error
 }
 
 type TodoServiceImpl struct {
 	todoRepo repo.ToDoRepo
 }
 
-func NewTodoServiceImpl(todoRepo repo.ToDoRepo) *TodoServiceImpl {
+func NewToDoService(todoRepo repo.ToDoRepo) *TodoServiceImpl {
 	return &TodoServiceImpl{
 		todoRepo: todoRepo,
 	}
@@ -46,7 +46,7 @@ func (s *TodoServiceImpl) CreateToDo(todo *models.ToDo) error {
 func (s *TodoServiceImpl) GetAllTodos() ([]models.ToDo, error) {
 	todos, err := s.todoRepo.GetAll()
 	if err != nil {
-		slog.Error("Failed to get all todos", err)
+		slog.Error("Failed to get all todos", "error", err.Error())
 		return nil, err
 	}
 

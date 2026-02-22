@@ -20,7 +20,7 @@ type JsonToDoRepo struct {
 	mu       sync.RWMutex
 }
 
-func NewJSONHandler(todoFile string) *JsonToDoRepo {
+func NewJSONTodoRepo(todoFile string) *JsonToDoRepo {
 	return &JsonToDoRepo{
 		todoFile: todoFile,
 	}
